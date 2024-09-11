@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro en Cinefilia</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        /* Estilo para el fondo de pantalla y el contenido centrado */
+        .register {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url("{% static 'images/welcome-background.jpg' %}");
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Estilo para la tarjeta de registro */
+        .register-card {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            color: white;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        /* Estilo para los botones */
+        .register-card .btn-danger {
+            background-color: #e50914;
+            border-color: #e50914;
+        }
+        .register-card .btn-danger:hover {
+            background-color: #f40612;
+            border-color: #f40612;
+        }
+
+        /* Estilo para los campos de formulario */
+        .register-card .form-control {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        .register-card .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: #e50914;
+            color: white;
+        }
+
+        /* Estilo del footer */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Cinefilia</a>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="register">
+        <div class="register-card">
+            <h4 class="text-center mb-4">Crea tu cuenta Cinefilia</h4>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="id_username">Nombre de Usuario</label>
+                    <input type="text" name="username" id="id_username" class="form-control" placeholder="Elige un nombre único" value="{{ form.username.value }}" required>
+                    <small class="form-text text-muted">Máximo 150 caracteres. Letras, dígitos y @/./+/-/_ permitidos.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_email">Correo Electrónico</label>
+                    <input type="email" name="email" id="id_email" class="form-control" placeholder="Tu correo electrónico" value="{{ form.email.value }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_profile_picture">Foto de Perfil (Opcional)</label>
+                    <input type="file" name="profile_picture" id="id_profile_picture" class="form-control">
+                    <small class="form-text text-muted">Sube una imagen para personalizar tu perfil.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_bio">Cuéntanos sobre ti (Opcional)</label>
+                    <textarea name="bio" id="id_bio" class="form-control" rows="3" placeholder="¿Qué te gusta ver?">{{ form.bio.value }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_password1">Contraseña</label>
+                    <input type="password" name="password1" id="id_password1" class="form-control" placeholder="Crea una contraseña segura" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_password2">Confirmar Contraseña</label>
+                    <input type="password" name="password2" id="id_password2" class="form-control" placeholder="Repite tu contraseña" required>
+                </div>
+
+                <button type="submit" class="btn btn-danger btn-block">Comienza tu aventura</button>
+            </form>
+            <div class="text-center mt-3">
+                <p class="text-muted">¿Ya tienes una cuenta? <a href="{% url 'login' %}" class="text-white">Inicia sesión</a></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white text-center">
+        <p>&copy; 2024 Cinefilia. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

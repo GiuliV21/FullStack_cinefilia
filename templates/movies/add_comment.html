@@ -1,0 +1,15 @@
+<!-- templates/movies/add_comment.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Comment</title>
+</head>
+<body>
+    <h2>Add Comment to {{ movie.title }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Comment</button>
+    </form>
+</body>
+</html>

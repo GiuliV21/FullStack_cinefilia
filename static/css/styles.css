@@ -1,0 +1,114 @@
+/* styles.css */
+
+/* Asegúrate de que el contenedor ocupe toda la pantalla */
+.container-fluid {
+    height: 100vh;
+}
+
+/* Estilo para el fondo de pantalla */
+.bg-image {
+    background: url("{% static 'images/welcome-background.jpg' %}") no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Estilo para la tarjeta de formulario */
+.card {
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo negro semi-transparente */
+}
+
+/* Estilo para el botón */
+.btn-danger {
+    background-color: #e50914;
+    border-color: #e50914;
+}
+
+.btn-danger:hover {
+    background-color: #f40612;
+    border-color: #f40612;
+}
+
+/* Estilo básico del cuerpo */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    background-color: #141414; /* Color de fondo oscuro */
+}
+
+/* Estilo del encabezado */
+header {
+    margin-bottom: 20px;
+}
+
+.navbar {
+    background-color: #000;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Estilo de la página de bienvenida */
+.welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url("{% static 'images/welcome-background.png' %}");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: #fff;
+}
+
+.welcome-content {
+    max-width: 600px;
+}
+
+.welcome h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.welcome p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+}
+
+.buttons .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+.btn-primary {
+    background-color: #e50914;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #b81d24;
+}
+
+.btn-secondary {
+    background-color: #333;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #555;
+}
+
+/* Estilo del pie de página */
+.footer {
+    padding: 20px;
+    border-top: 1px solid #333;
+    margin-top: 20px;
+}
+
+.footer p {
+    margin: 0;
+}
