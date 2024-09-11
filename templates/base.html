@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Cinefilia</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        /* Estilo para el fondo de pantalla y el contenido centrado */
+        .welcome {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url("{% static 'images/welcome-background.jpg' %}");
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Estilo para el contenido de bienvenida */
+        .welcome-content {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 50px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        /* Estilo para los botones */
+        .welcome-content .btn {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+
+        /* Estilo del footer */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Cinefilia</a>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="welcome">
+        <div class="welcome-content text-center">
+            <h1>Welcome to Cinefilia</h1>
+            <p>Your ultimate destination for movies and TV shows.</p>
+            <div class="buttons">
+                <!-- Botones para registrar o iniciar sesión -->
+                <a href="{% url 'register' %}" class="btn btn-primary">Register</a>
+                <a href="{% url 'login' %}" class="btn btn-secondary">Login</a>
+                
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white text-center">
+        <p>&copy; 2024 Cinefilia. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
