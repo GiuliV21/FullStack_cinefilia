@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie & Series App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .movie-card, .series-card {
+            width: 180px;
+            margin: 10px;
+        }
+        .movie-card img, .series-card img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .movie-card img:hover, .series-card img:hover {
+            transform: scale(1.05);
+        }
+        .category-title {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+        .profile-info {
+            margin-bottom: 20px;
+        }
+        .profile-info h5 {
+            margin: 0;
+        }
+        .nav-link {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-dark text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Movie & Series App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Géneros
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#" onclick="showMovies()">Películas Populares</a>
+                        <a class="dropdown-item" href="#" onclick="showSeries()">Series Populares</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="profile-link">Perfil: <span id="profile-name">John Doe</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="logout()">Cerrar sesión</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <!-- Información del perfil -->
+        <div class="profile-info">
+            <h5>Perfil Actual: <span id="current-profile">John Doe</span></h5>
+        </div>
+
+        <!-- Películas -->
+        <h2 class="category-title">Películas</h2>
+        <div id="movie-container" class="carousel-container">
+            <!-- Las películas se cargarán aquí -->
+        </div>
+
+        <!-- Series -->
+        <h2 class="category-title">Series</h2>
+        <div id="series-container" class="carousel-container">
+            <!-- Las series se cargarán aquí -->
+        </div>
+    </div>
+
+    <script>
+        // Datos de ejemplo para películas y series
+        const data = {
+            movies: [
+                { id: 1, title: "Inception", poster: "/static/images/inception.png" },
+                { id: 2, title: "The Matrix", poster: "/static/images/the-matrix.jpg" },
+                { id: 3, title: "Interstellar", poster: "/static/images/interstellar.jpg" }
+                // Agrega más películas aquí
+            ],
+            series: [
+                { id: 1, title: "Breaking Bad", poster: "/static/images/breaking-bad.jpg" },
+                { id: 2, title: "Stranger Things", poster: "/static/images/stranger-things.jpg" },
+                { id: 3, title: "The Crown", poster: "/static/images/the-crown.jpg" }
+                // Agrega más series aquí
+            ]
+        };
+
+        // Función para mostrar películas
+        function showMovies() {
+            const container = document.getElementById('movie-container');
+            container.innerHTML = ''; // Limpiar contenido previo
+            data.movies.forEach(movie => {
+                const movieCard = `
+                    <div class="movie-card">
+                        <a href="/movies/${movie.id}">
+                            <img src="${movie.poster}" alt="${movie.title}">
+                            <h5 class="text-center">${movie.title}</h5>
+                        </a>
+                    </div>`;
+                container.innerHTML += movieCard;
+            });
+        }
+
+        // Función para mostrar series
+        function showSeries() {
+            const container = document.getElementById('series-container');
+            container.innerHTML = ''; // Limpiar contenido previo
+            data.series.forEach(series => {
+                const seriesCard = `
+                    <div class="series-card">
+                        <a href="/series/${series.id}">
+                            <img src="${series.poster}" alt="${series.title}">
+                            <h5 class="text-center">${series.title}</h5>
+                        </a>
+                    </div>`;
+                container.innerHTML += seriesCard;
+            });
+        }
+
+        // Función para cerrar sesión
+        function logout() {
+            // Simulación de cierre de sesión
+            alert('Has cerrado sesión');
+            window.location.href = '/login'; // Redirige al login
+        }
+
+        // Configuración del perfil
+        document.getElementById('profile-link').onclick = function() {
+            window.location.href = 'http://127.0.0.1:8000/users/dashboard/';
+        };
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

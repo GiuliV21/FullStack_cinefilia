@@ -1,0 +1,11 @@
+<h2>Select a Profile</h2>
+<div>
+    {% for profile in profiles %}
+        <a href="{% url 'profile_select' profile.id %}">
+            <div>
+                <img src="{{ profile.profile_picture.url }}" alt="{{ profile.profile_name }}">
+                <p>{{ profile.profile_name }}</p>
+            </div>
+        </a>
+    {% endfor %}
+</div>

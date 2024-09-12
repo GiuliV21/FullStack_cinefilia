@@ -1,15 +1,111 @@
-<!-- templates/registration/login.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicia Sesión en Cinefilia</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        /* Estilo para el fondo de pantalla y el contenido centrado */
+        .login {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url("{% static 'images/welcome-background.jpg' %}");
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Estilo para la tarjeta de login */
+        .login-card {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            max-width: 400px; /* Reduce el tamaño de la tarjeta */
+            width: 100%;
+        }
+
+        /* Estilo para los botones */
+        .login-card .btn-danger {
+            background-color: #e50914;
+            border-color: #e50914;
+        }
+        .login-card .btn-danger:hover {
+            background-color: #f40612;
+            border-color: #f40612;
+        }
+
+        /* Estilo para los campos de formulario */
+        .login-card .form-control {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: white; /* Cambia el color de texto a blanco */
+        }
+        .login-card .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: #e50914;
+            color: white;
+        }
+
+        /* Estilo para los labels */
+        .login-card label {
+            color: white; /* Asegúrate de que los labels también sean blancos */
+        }
+
+        /* Estilo del footer */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 10px 0;
+        }
+    </style>
 </head>
 <body>
-    <h2>Login</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
+    <!-- Barra de navegación -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Cinefilia</a>
+        </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="login">
+        <div class="login-card">
+            <h4 class="text-center mb-4">Inicia sesión en Cinefilia</h4>
+            <form method="post">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="id_username">Nombre de Usuario</label>
+                    <input type="text" name="username" id="id_username" class="form-control" placeholder="Ingresa tu nombre de usuario" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_password">Contraseña</label>
+                    <input type="password" name="password" id="id_password" class="form-control" placeholder="Ingresa tu contraseña" required>
+                </div>
+
+                <button type="submit" class="btn btn-danger btn-block">Iniciar sesión</button>
+            </form>
+            <div class="text-center mt-3">
+                <p class="text-muted">¿No tienes cuenta? <a href="{% url 'register' %}" class="text-white">Regístrate aquí</a></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white text-center">
+        <p>&copy; 2024 Cinefilia. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

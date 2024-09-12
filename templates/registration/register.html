@@ -21,11 +21,11 @@
 
         /* Estilo para la tarjeta de registro */
         .register-card {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
             border-radius: 10px;
             color: white;
-            max-width: 500px;
+            max-width: 400px; /* Reduce el tamaño de la tarjeta */
             width: 100%;
         }
 
@@ -43,11 +43,17 @@
         .register-card .form-control {
             background-color: rgba(255, 255, 255, 0.1);
             border-color: rgba(255, 255, 255, 0.3);
+            color: white; /* Cambia el color de texto a blanco */
         }
         .register-card .form-control:focus {
             background-color: rgba(255, 255, 255, 0.2);
             border-color: #e50914;
             color: white;
+        }
+
+        /* Estilo para los labels */
+        .register-card label {
+            color: white; /* Asegúrate de que los labels también sean blancos */
         }
 
         /* Estilo del footer */
@@ -113,14 +119,14 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer bg-dark text-white text-center">
-        <p>&copy; 2024 Cinefilia. All rights reserved.</p>
-    </footer>
 
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Redirección después de un envío exitoso -->
+    <script>
+        document.getElementById("registerForm").onsubmit = function() {
+            // Simula un envío exitoso y redirige al login
+            window.location.href = "{% url 'login' %}";
+            return false; // Prevenir el comportamiento de envío predeterminado
+        };
+    </script>
 </body>
 </html>

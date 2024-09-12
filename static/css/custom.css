@@ -1,0 +1,12 @@
+body {
+    background-color: #141414; /* Similar al fondo de Netflix */
+}
+h2.category-title {
+    color: #ffffff;
+    font-weight: bold;
+}
+.movie-card h5 {
+    color: #ffffff;
+    font-size: 1rem;
+    margin-top: 10px;
+}
